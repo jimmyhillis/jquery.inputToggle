@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>jQuery inputToggle Example</title>
+  <meta name="description" content="Example page for jQuery toggle for managing initial input values">
+  <meta name="viewport" content="width=device-width">
+  <style type="text/css">
+  	body { background:#eee; font-family:'Helvetica','Arial',sans-serif; font-size:14px; color:#222; }
+  	#mainwrap { margin:0 auto; width: 50%; min-width: 450px; min-height:600px; padding:5%; background-color: #bbb; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; box-shadow: 0px 1px 10px 1px #bbb; }
+  	h1 { text-align:center; }
+  	fieldset { }
+  	label { display: block; width:100%; }
+  	input,textarea { padding:4px 0; border:0; margin:0; width:100%; }
+  </style>
+</head>
+<body>
+	<div id="mainwrap">
+	  <header>
+	  	<h1>jQuery Input Toggle</h1>
+	  	<p>Here is a simple example of the inputToggle plugin in action</p>
+	  </header>
+	  <div role="main">
+	  	<form action="#" method="get">
+	  		<fieldset>
+	  			<label for="text_test">
+	  				<p>Song Title</p>
+	  				<input type="text" id="text_test" name="text_test" value="It's about time... I'm addicted to this..." />
+	  			</label>
+	  			<label>
+	  				<p>Lyrics</p>
+	  				<textarea id="textarea_test" name="textarea_test">I make promises I promise I won't Keep!</textarea>
+	  			</label>
+	  		</fieldset>
+	  	</form>
+	  	<code><pre>$('input').inputToggle();</pre></code>
+	  </div>
+	  <footer>
+	  	Plugin by jimmy hillis @ppjim3
+	  </footer>
+	 </div>
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  <script src="jquery.inputToggle.js"></script>
+  <script type="text/javascript">$('input,textarea').inputToggle();</script>
+  
+</body>
+</html>

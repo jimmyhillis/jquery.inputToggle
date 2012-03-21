@@ -3,22 +3,32 @@
 // of the value (on page load) and reverts back to it when
 // a user blurs and doesn't have any content within the form
 */
-
 (function( $ ) {
-  $.fn.inputToggle = function() {
+	// If the current value matches the default, remove it.
+	var hidedefault = function() { 
+		if($(this).val() === $(this).attr('data-initialvalue')) {
+			$(this).val('');
+		}
+	}
+	// If the current input value is empty (space)
+	// then put the default back in
+	var showdefault = function() {
+		if(/^(\s)*$/i.test($(this).val())) {
+			$(this).val($(this).attr('data-initialvalue'));
+		}
+	}
+	// Create inputToggle public space and allow for
+	// options. Run initial functionality to set the 
+	// default values and bind listeners to events.
+  $.fn.inputToggle = function(options) {
+  	options = options || {};
 		return this.each(function() {
 			// Set the initial value to be stored in the elements data-
 			$(this).attr('data-initialvalue', $(this).val());
 			// On focus if the default is set remove it
-			$(this).bind('focus', function() {
-				if($(this).val() === $(this).attr('data-initialvalue'))
-					$(this).val('');
-			});
+			$(this).bind('focus', hidedefault);
 			// On focus if there is no value provided, set it as default
-			$(this).bind('blur', function() {
-				if($(this).val() === '')
-					$(this).val($(this).attr('data-initialvalue'));
-			});
+			$(this).bind('blur', showdefault);
 		});
 	};
 })( jQuery );
