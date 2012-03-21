@@ -11,13 +11,13 @@
 			$(this).attr('data-initialvalue', $(this).val());
 			// On focus if the default is set remove it
 			$(this).bind('focus', function() {
-				if($(this).val() === $(this).attr('data'))
+				if($(this).val() === $(this).attr('data-initialvalue'))
 					$(this).val('');
 			});
 			// On focus if there is no value provided, set it as default
 			$(this).bind('blur', function() {
-				if($(this).val() === /\s/i)
-					$(this).val($(this).attr('data'));
+				if($(this).val() === '')
+					$(this).val($(this).attr('data-initialvalue'));
 			});
 		});
 	};
