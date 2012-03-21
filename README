@@ -1,0 +1,3 @@
+jQuery Input Toggle Plugin
+
+This is a very simple (and trivial) plugin that I find very useful on a lot of websites. It allows you to keep the default values of an input element on focus. This will then be put back into the input element if the user has left it blank. Useful in senarios where the input initial value describes what is required or has a hint within it.
