@@ -1,0 +1,8 @@
+{
+  "name": "inputToggle",
+  "version": "1.0.1",
+  "author": "jimmyhillis",
+  "description": "Polyfil for HTML5 placeholder.",
+  "devDependencies": {
+  }
+}

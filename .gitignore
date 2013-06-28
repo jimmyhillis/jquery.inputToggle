@@ -1,0 +1,25 @@
+syntax: glob
+
+#Node
+node_modules
+components
+
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+npm-debug.log
+
+#System
+.DS_Store
+*.swp
+*.ini~

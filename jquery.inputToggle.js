@@ -3,50 +3,77 @@
 // of the value (on page load) and reverts back to it when
 // a user blurs and doesn't have any content within the form
 */
-(function( $ ) {
 
-    // Private methods
-    var placeholderSupport
-        , hideDefault
-        , showDefault;
+/* clobals define */
+/* jshint camelcase:false, laxcomma:true */
 
-    // Check for HTML5 form "placeholder" support, a better
-    // solution for the whole problem
-    placeholderSupport = function() {
-        var input_element = document.createElement('input');
-        return ('placeholder' in input_element);
+(function (factory) {
+    'use strict';
+
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    }
+    else {
+        // Browser globals
+        factory(window.jQuery);
+    }
+
+}(function ($) {
+    'use strict';
+
+    /**
+     * Check for HTML5 form "placeholder" support, a better
+     * solution for the whole problem.
+     * @return {null}
+     */
+    var Placeholder = function (el) {
+        var $el = $(el);
+        if (!this._support) {
+            $el.val($el.attr('placeholder'));
+            $el.bind('focus', this.hideDefault);
+            $el.bind('blur', this.showDefault);
+        }
+        return this;
     };
 
-    // If the current value matches the default, remove it.
-    hideDefault = function() {
+    Placeholder.prototype._support = function () {
+        var input_element = document.createElement('input');
+        return 'placeholder' in input_element;
+    };
+
+    /**
+     * If the current value matches the default, remove it.
+     * @return {null}
+     */
+    Placeholder.prototype.hideDefault = function () {
         if($(this).val() === $(this).attr('placeholder')) {
             $(this).val('');
         }
     };
 
-    // If the current input value is empty (space)
-    // then put the default back in
-    showDefault = function() {
+    /**
+     * If the current input value is empty (space)
+     * then put the default back in
+     * @return {null}
+     */
+    Placeholder.prototype.showDefault = function () {
         if(/^(\s)*$/i.test($(this).val())) {
             $(this).val($(this).attr('placeholder'));
         }
     };
 
-    // Create inputToggle public space and allow for
-    // options. Run initial functionality to set the
-    // default values and bind listeners to events.
-    $.fn.inputToggle = function(options) {
-        options = options || {};
-        return this.each(function() {
-            if (!placeholderSupport()) {
-                // Set the initial value from placeholder
-                $(this).val($(this).attr('placeholder'));
-                // On focus if the default is set remove it
-                $(this).bind('focus', hideDefault);
-                // On focus if there is no value provided, set it as default
-                $(this).bind('blur', showDefault);
-            }
+    /**
+     * Setup functionality on provided selectors.
+     * @return {this}
+     */
+    $.fn.inputToggle = function () {
+        return this.each(function () {
+            var ph = new Placeholder(this);
+            return ph;
         });
     };
 
-})( jQuery );
+    return $.fn.inputToggle;
+
+}));
