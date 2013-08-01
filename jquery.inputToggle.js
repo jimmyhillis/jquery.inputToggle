@@ -4,7 +4,7 @@
 // a user blurs and doesn't have any content within the form
 */
 
-/* clobals define */
+/* globals define */
 /* jshint camelcase:false, laxcomma:true */
 
 (function (factory) {
@@ -29,8 +29,10 @@
      */
     var Placeholder = function (el) {
         var $el = $(el);
-        if (!this._support) {
-            $el.val($el.attr('placeholder'));
+        if (!this._support()) {
+            if ($el.val() === '') {
+                $el.val($el.attr('placeholder'));
+            }
             $el.bind('focus', this.hideDefault);
             $el.bind('blur', this.showDefault);
         }
