@@ -7,15 +7,62 @@
   <meta name="description" content="Example page for jQuery toggle for managing initial input values">
   <meta name="viewport" content="width=device-width">
   <style type="text/css">
-  	body { background:#fff; font-family:'Helvetica','Arial',sans-serif; font-size: 14px; }
-  	#mainwrap { margin:0 auto; width: 50%; min-width: 450px; padding: 5%; color: #222; background-color: #eee; }
-  	h1 { text-align:center; margin: 0; color: #33ADD6; }
-  	a { color: #fff; text-decoration: underline; color: #33ADD6; }
-  	p { text-align: center; }
-  	fieldset { border: 0; }
-  	pre { padding: 20px; font-family: 'courier', monospace; background: #222; color: #eee; font-size: 0.9em; }
-  	label { display: block; width: 100%; }
-  	input,textarea { padding: 5px; border:0; margin:10px 0; width: 99%; }
+  	body {
+        background:#fff;
+        font-family:'Helvetica','Arial',sans-serif;
+        font-size:16px;
+        line-height:1.6em;
+        background-color:#eee;
+    }
+  	#mainwrap {
+        margin:0 auto;
+        width:50%;
+        min-width:450px;
+        padding:2%;
+        color:#222;
+    }
+  	h1 {
+        color:#33ADD6;
+        text-transform:uppercase;
+    }
+  	a {
+        color:#fff;
+        text-decoration:underline;
+        color:#33ADD6;
+    }
+  	fieldset {
+        border:0;
+        margin:0;
+        padding:0;
+    }
+  	pre {
+        padding:20px;
+        font-family:'courier', monospace;
+        background:#333;
+        color:white;
+    }
+  	label {
+        display:block;
+        width:100%;
+    }
+  	input[type=text], textarea {
+        padding:0.5em;
+        border:0;
+        margin:10px 0;
+        width:100%;
+        font-size:1em;
+        line-height:1.6em;
+    }
+    button{
+        background:#33ADD6;
+        border:0;
+        color:white;
+        font-size:1em;
+        line-height:1.6em;
+    }
+    textarea{
+        height:4.8em;
+    }
   </style>
 </head>
 <body>
@@ -23,9 +70,9 @@
 	  <header>
 	  	<h1>jQuery Input Toggle</h1>
 	  	<p>
-	  		Simple example of the jQuery inputToggle plugin. It allows you to set a default value for a form
-	  		that will be removed when a user clicks on it. It will also show every time a user changes focus
-	  		leaving the field empty.
+	  		Working example of the jQuery inputToggle plugin. It is a polyfill
+            for the placeholder command allowing IE and older browsers to have
+            a default value set. This will show and hide on focus and blur.
 	  	</p>
 	  </header>
 	  <div role="main">
@@ -40,13 +87,11 @@
 	  				<textarea id="textarea_test" name="textarea_test" placeholder="I make promises I promise I won't Keep!"></textarea>
 	  			</label>
 	  		</fieldset>
+            <button type="submit">Go!</button>
 	  	</form>
 	  	<h2>Usage</h2>
 	  	<code><pre>$('input').inputToggle();</pre></code>
 	  </div>
-	  <footer>
-	  jQuery plugin by <a href="http://hillis.me">jimmy hillis</a> <a href="http://twitter.com/ppjim3">@ppjim3</a>
-	  </footer>
 	 </div>
 
   <!-- JavaScript at the bottom for fast page loading -->

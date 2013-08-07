@@ -1,11 +1,10 @@
 /*
-// Simple jQuery plugin that remembers the initial state
+// jQuery plugin that remembers the initial state
 // of the value (on page load) and reverts back to it when
 // a user blurs and doesn't have any content within the form
 */
 
 /* globals define */
-/* jshint camelcase:false, laxcomma:true */
 
 (function (factory) {
     'use strict';
@@ -29,12 +28,18 @@
      */
     var Placeholder = function (el) {
         var $el = $(el);
+        var that = this;
         if (!this._support()) {
             if ($el.val() === '') {
                 $el.val($el.attr('placeholder'));
             }
             $el.bind('focus', this.hideDefault);
             $el.bind('blur', this.showDefault);
+            // If this el has a form which is clicked, remove
+            // the default value before submitting
+            $(el.form).on('submit', function () {
+                that.hideDefault.call(el)
+            });
         }
         return this;
     };
@@ -49,6 +54,7 @@
      * @return {null}
      */
     Placeholder.prototype.hideDefault = function () {
+        window.console.log('yeah');
         if($(this).val() === $(this).attr('placeholder')) {
             $(this).val('');
         }
