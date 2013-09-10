@@ -54,7 +54,6 @@
      * @return {null}
      */
     Placeholder.prototype.hideDefault = function () {
-        window.console.log('yeah');
         if($(this).val() === $(this).attr('placeholder')) {
             $(this).val('');
         }
